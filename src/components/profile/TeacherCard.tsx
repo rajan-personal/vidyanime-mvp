@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface TeacherCardProps {
@@ -35,10 +36,13 @@ export default function TeacherCard({
       <div className="flex items-center gap-[21px]">
         <div className="relative w-[80px] h-[80px] rounded-full bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-500 flex-shrink-0">
           {avatar ? (
-            <img
+            <Image
               src={avatar}
               alt={name}
-              className="w-full h-full rounded-full object-cover"
+              width={80}
+              height={80}
+              unoptimized
+              className="h-full w-full rounded-full object-cover"
             />
           ) : (
             <div className="w-full h-full rounded-full flex items-center justify-center text-white text-xl font-bold">

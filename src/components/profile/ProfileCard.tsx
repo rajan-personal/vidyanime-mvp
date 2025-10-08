@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface ProfileCardProps {
   name: string;
   role: string;
@@ -21,10 +23,13 @@ export default function ProfileCard({
       <div className="flex items-center gap-[21px]">
         <div className="relative w-[112px] h-[112px] rounded-full bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-500 flex-shrink-0">
           {avatar ? (
-            <img
+            <Image
               src={avatar}
               alt={name}
-              className="w-full h-full rounded-full object-cover"
+              width={112}
+              height={112}
+              unoptimized
+              className="h-full w-full rounded-full object-cover"
             />
           ) : (
             <div className="w-full h-full rounded-full flex items-center justify-center text-white text-2xl font-bold">
