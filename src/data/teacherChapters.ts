@@ -1,3 +1,5 @@
+import { getAssetPath } from "@/utils/paths";
+
 export type ChapterTimelineEntry = {
   label: string;
   timestamp: number; // seconds
@@ -27,8 +29,8 @@ export const teacherChapters: ChapterDetails[] = [
     subject: "Geography",
     description:
       "Locate India on the globe, interpret its latitudinal and longitudinal extent, and analyse how position influences climate and connections with neighbouring countries.",
-  videoUrl: "/video.mp4",
-  videoStreamUrl: "/video.mp4",
+  videoUrl: getAssetPath("video.mp4"),
+  videoStreamUrl: getAssetPath("video.mp4"),
     timeline: [
       { label: "Locating India globally", timestamp: 0 },
       { label: "Latitudes and longitudes", timestamp: 65 },
@@ -53,8 +55,8 @@ export const teacherChapters: ChapterDetails[] = [
     subject: "Geography",
     description:
       "Explore India's physiographic divisions—from the Himalayas to the coastal plains—and understand how each landscape influences settlement and economic activity.",
-  videoUrl: "/video.mp4",
-  videoStreamUrl: "/video.mp4",
+  videoUrl: getAssetPath("video.mp4"),
+  videoStreamUrl: getAssetPath("video.mp4"),
     timeline: [
       { label: "Formation of the Himalayas", timestamp: 0 },
       { label: "Northern plains", timestamp: 70 },
@@ -78,8 +80,8 @@ export const teacherChapters: ChapterDetails[] = [
     subject: "Geography",
     description:
       "Understand India's river systems, trace their origins, and see how they shape agriculture, hydropower, and cultural practices across regions.",
-  videoUrl: "/video.mp4",
-  videoStreamUrl: "/video.mp4",
+  videoUrl: getAssetPath("video.mp4"),
+  videoStreamUrl: getAssetPath("video.mp4"),
     timeline: [
       { label: "Himalayan vs Peninsular rivers", timestamp: 0 },
       { label: "Indus river system", timestamp: 75 },
@@ -104,8 +106,8 @@ export const teacherChapters: ChapterDetails[] = [
     subject: "Geography",
     description:
       "Analyse resource types, utilisation patterns, and the need for sustainable development to balance growth with conservation.",
-  videoUrl: "/video.mp4",
-  videoStreamUrl: "/video.mp4",
+  videoUrl: getAssetPath("video.mp4"),
+  videoStreamUrl: getAssetPath("video.mp4"),
     timeline: [
       { label: "Classification of resources", timestamp: 0 },
       { label: "Land resources", timestamp: 65 },
@@ -129,8 +131,8 @@ export const teacherChapters: ChapterDetails[] = [
     subject: "Geography",
     description:
       "Study India's biodiversity, conservation strategies, and the role communities play in protecting forests and wildlife habitats.",
-  videoUrl: "/video.mp4",
-  videoStreamUrl: "/video.mp4",
+  videoUrl: getAssetPath("video.mp4"),
+  videoStreamUrl: getAssetPath("video.mp4"),
     timeline: [
       { label: "Types of vegetation", timestamp: 0 },
       { label: "Biodiversity hotspots", timestamp: 70 },
@@ -155,7 +157,7 @@ export const teacherChapters: ChapterDetails[] = [
     subject: "Geography",
     description:
       "Investigate the status of India's water resources, the importance of water harvesting, and strategies for sustainable management.",
-    videoUrl: "/video.mp4",
+    videoUrl: getAssetPath("video.mp4"),
     timeline: [
       { label: "Need for water conservation", timestamp: 0 },
       { label: "Multipurpose river valley projects", timestamp: 80 },

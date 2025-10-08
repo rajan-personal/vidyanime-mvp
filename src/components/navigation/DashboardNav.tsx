@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getAssetPath } from "@/utils/paths";
 
 interface DashboardNavProps {
   activeTab?: "principal" | "teacher" | "school";
@@ -23,7 +24,7 @@ export default function DashboardNav({
             {/* Logo - 80px × 80px */}
             <div className="w-[80px] h-[80px] flex-none">
               <Image
-                src="/logo.svg"
+                src={getAssetPath("logo.svg")}
                 alt="Vidyanime Logo"
                 width={80}
                 height={80}

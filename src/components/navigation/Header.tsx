@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { getAssetPath, getBasePath } from "@/utils/paths";
 
 interface HeaderProps {
   activeTab?: "principal" | "teacher" | "school";
@@ -16,15 +17,16 @@ export default function Header({
   const router = useRouter();
 
   const handleNavigation = (tab: "principal" | "teacher" | "school") => {
+    const basePath = getBasePath();
     switch (tab) {
       case "principal":
-        router.push("/principal-dashboard");
+        router.push(`${basePath}/principal-dashboard`);
         break;
       case "teacher":
-        router.push("/teachers-list");
+        router.push(`${basePath}/teachers-list`);
         break;
       case "school":
-        router.push("/school-dashboard");
+        router.push(`${basePath}/school-dashboard`);
         break;
     }
   };
@@ -38,13 +40,13 @@ export default function Header({
         <div className="flex flex-row items-center gap-[169px] w-[1180px]">
           {/* Frame 1171276028 - Logo and Title - Clickable to go to select-profile */}
           <Link
-            href="/select-profile"
+            href={`${getBasePath()}/select-profile`}
             className="flex flex-row items-center gap-[20px] w-[306px] h-[80px] cursor-pointer hover:opacity-80 transition-opacity"
           >
             {/* Logo - 80px × 80px */}
             <div className="w-[80px] h-[80px] flex-none">
               <Image
-                src="/logo.svg"
+                src={getAssetPath("logo.svg")}
                 alt="Vidyanime Logo"
                 width={80}
                 height={80}
