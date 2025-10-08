@@ -5,6 +5,7 @@ import { type ChangeEvent, type MutableRefObject } from "react";
 import { Download, Maximize2, Minimize2, Upload } from "lucide-react";
 
 interface DocumentPanelProps {
+  panelRef: MutableRefObject<HTMLDivElement | null>;
   containerRef: MutableRefObject<HTMLDivElement | null>;
   pdfUrl: string | null;
   pdfName: string | null;
@@ -17,6 +18,7 @@ interface DocumentPanelProps {
 }
 
 export const DocumentPanel = ({
+  panelRef,
   containerRef,
   pdfUrl,
   pdfName,
@@ -28,8 +30,8 @@ export const DocumentPanel = ({
   onToggleFullscreen,
 }: DocumentPanelProps) => {
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex items-start justify-between border-b border-[#E5E7EB] px-5 py-4">
+    <div ref={panelRef} className="flex h-full flex-col bg-white">
+      <div className="flex items-start justify-between border-b border-[#E5E7EB] bg-white/95 px-5 py-4 shadow-sm backdrop-blur">
         <div>
           <h3 className="text-lg font-semibold text-[#1357C6]">Document Viewer</h3>
           <p className="text-sm text-[#6F7787]">Upload lesson plans or worksheets in PDF format.</p>
@@ -37,13 +39,13 @@ export const DocumentPanel = ({
         <button
           onClick={onToggleFullscreen}
           disabled={!pdfUrl}
-          className="rounded-full border border-[#D9D9D9] p-2 text-[#4E4E4E] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6] disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-full border border-[#D9D9D9] bg-white/90 p-2 text-[#303540] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6] disabled:cursor-not-allowed disabled:opacity-60"
           aria-label={isFullscreen ? "Exit document fullscreen" : "Enter document fullscreen"}
         >
           {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
         </button>
       </div>
-      <div className="flex flex-1 flex-col gap-4 p-5">
+  <div className="flex flex-1 flex-col gap-4 bg-white p-5">
         <label className="flex flex-col items-center justify-center gap-3 rounded-[16px] border border-dashed border-[#1357C6] bg-[#F0F5FF] p-6 text-center">
           <Upload className="h-6 w-6 text-[#1357C6]" />
           <div>
@@ -79,20 +81,20 @@ export const DocumentPanel = ({
                         ? "Return to full document view"
                         : "Shrink document while staying in fullscreen"
                   }
-                  className="rounded-full border border-[#D9D9D9] px-3 py-1 text-xs font-medium text-[#4E4E4E] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6] disabled:cursor-not-allowed disabled:opacity-60"
+                  className="rounded-full border border-[#D9D9D9] bg-white/90 px-3 py-1 text-xs font-medium text-[#303540] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {isMiniView ? "Fill view" : "Mini view"}
                 </button>
                 <a
                   href={pdfUrl}
                   download={pdfName ?? "chapter-document.pdf"}
-                  className="rounded-full border border-[#D9D9D9] px-3 py-1 text-xs font-medium text-[#1357C6] transition hover:border-[#1357C6] hover:bg-[#1357C6] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
+                  className="rounded-full border border-[#D9D9D9] bg-white/90 px-3 py-1 text-xs font-medium text-[#1357C6] transition hover:border-[#1357C6] hover:bg-[#1357C6] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
                 >
                   Save copy
                 </a>
                 <button
                   onClick={onToggleFullscreen}
-                  className="rounded-full border border-[#D9D9D9] p-2 text-[#4E4E4E] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
+                  className="rounded-full border border-[#D9D9D9] bg-white/90 p-2 text-[#303540] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
                   aria-label={isFullscreen ? "Exit document fullscreen" : "Enter document fullscreen"}
                   title={
                     isFullscreen

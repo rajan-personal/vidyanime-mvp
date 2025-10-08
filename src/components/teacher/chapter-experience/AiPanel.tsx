@@ -36,15 +36,15 @@ export const AiPanel = ({
   onToggleFullscreen,
 }: AiPanelProps) => {
   return (
-    <div ref={containerRef} className="relative flex h-full min-h-0 flex-col">
-      <div className="flex items-start justify-between border-b border-[#E5E7EB] px-5 py-4">
+    <div ref={containerRef} className="relative flex h-full min-h-0 flex-col bg-white">
+      <div className="flex items-start justify-between border-b border-[#E5E7EB] bg-white/95 px-5 py-4 shadow-sm backdrop-blur">
         <div>
           <h3 className="text-lg font-semibold text-[#1357C6]">AI Lesson Chat</h3>
           <p className="text-sm text-[#6F7787]">Ask a question and get a chapter-aware answer in seconds.</p>
         </div>
         <button
           onClick={onToggleFullscreen}
-          className="rounded-full border border-[#D9D9D9] p-2 text-[#4E4E4E] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
+          className="rounded-full border border-[#D9D9D9] bg-white/90 p-2 text-[#303540] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
           aria-label={isFullscreen ? "Exit AI panel fullscreen" : "Enter AI panel fullscreen"}
         >
           {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}

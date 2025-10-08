@@ -7,6 +7,7 @@ import { Maximize2, Minimize2 } from "lucide-react";
 import { whiteboardPalette } from "./constants";
 
 interface WhiteboardPanelProps {
+  panelRef: MutableRefObject<HTMLDivElement | null>;
   containerRef: MutableRefObject<HTMLDivElement | null>;
   canvasRef: MutableRefObject<HTMLCanvasElement | null>;
   color: string;
@@ -20,6 +21,7 @@ interface WhiteboardPanelProps {
 }
 
 export const WhiteboardPanel = ({
+  panelRef,
   containerRef,
   canvasRef,
   color,
@@ -32,8 +34,8 @@ export const WhiteboardPanel = ({
   handlePointerUp,
 }: WhiteboardPanelProps) => {
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between border-b border-[#E5E7EB] px-4 py-3">
+    <div ref={panelRef} className="flex h-full flex-col bg-white">
+      <div className="flex items-center justify-between border-b border-[#E5E7EB] bg-white/95 px-4 py-3 shadow-sm backdrop-blur">
         <div className="flex items-center gap-2">
           {whiteboardPalette.map((paletteColor) => (
             <button
@@ -50,13 +52,13 @@ export const WhiteboardPanel = ({
         <div className="flex items-center gap-2">
           <button
             onClick={onClear}
-            className="rounded-full border border-[#D9D9D9] px-3 py-1 text-xs text-[#4E4E4E] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
+            className="rounded-full border border-[#D9D9D9] bg-white/90 px-3 py-1 text-xs text-[#303540] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
           >
             Clear
           </button>
           <button
             onClick={onToggleFullscreen}
-            className="rounded-full border border-[#D9D9D9] p-2 text-[#4E4E4E] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
+            className="rounded-full border border-[#D9D9D9] bg-white/90 p-2 text-[#303540] transition hover:border-[#1357C6] hover:text-[#1357C6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1357C6]"
             aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
           >
             {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}

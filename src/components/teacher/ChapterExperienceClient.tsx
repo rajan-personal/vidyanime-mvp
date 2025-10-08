@@ -51,6 +51,9 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
     resizeCanvas,
   } = useWhiteboardCanvas();
 
+  const whiteboardPanelRef = useRef<HTMLDivElement | null>(null);
+  const documentPanelRef = useRef<HTMLDivElement | null>(null);
+
   const {
     documentContainerRef,
     pdfUrl,
@@ -76,11 +79,11 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
 
   const panelRefs = useMemo(
     () => ({
-      whiteboard: whiteboardContainerRef,
-      documents: documentContainerRef,
+      whiteboard: whiteboardPanelRef,
+      documents: documentPanelRef,
       ai: aiContainerRef,
     }),
-    [aiContainerRef, documentContainerRef, whiteboardContainerRef],
+    [aiContainerRef, documentPanelRef, whiteboardPanelRef],
   );
 
   const [dockedVideoMount, setDockedVideoMount] = useState<HTMLDivElement | null>(null);
@@ -154,7 +157,6 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
     videoPlaybackStateRef.current.currentTime = timestamp;
     const video = videoRef.current;
     if (!video) return;
-    video.currentTime = timestamp;
     const playPromise = video.play();
     if (playPromise) {
       void playPromise.catch(() => {});
@@ -162,33 +164,33 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
   }, []);
 
   const toggleWhiteboardFullscreen = useCallback(async () => {
-    const container = whiteboardContainerRef.current;
-    if (!container) return;
+    const panel = whiteboardPanelRef.current;
+    if (!panel) return;
     try {
       if (!document.fullscreenElement) {
-        await container.requestFullscreen();
-      } else if (document.fullscreenElement === container) {
+        await panel.requestFullscreen();
+      } else if (document.fullscreenElement === panel) {
         await document.exitFullscreen();
       }
     } catch (error) {
       console.error("Failed to toggle whiteboard fullscreen", error);
     }
-  }, [whiteboardContainerRef]);
+  }, [whiteboardPanelRef]);
 
   const toggleDocumentFullscreen = useCallback(async () => {
-    const container = documentContainerRef.current;
-    if (!container) return;
+    const panel = documentPanelRef.current;
+    if (!panel) return;
     try {
       if (!document.fullscreenElement) {
-        await container.requestFullscreen();
-      } else if (document.fullscreenElement === container) {
+        await panel.requestFullscreen();
+      } else if (document.fullscreenElement === panel) {
         await document.exitFullscreen();
         setIsDocumentMiniView(false);
       }
     } catch (error) {
       console.error("Failed to toggle document fullscreen", error);
     }
-  }, [documentContainerRef, setIsDocumentMiniView]);
+  }, [documentPanelRef, setIsDocumentMiniView]);
 
   const toggleAiFullscreen = useCallback(async () => {
     const container = aiContainerRef.current;
@@ -216,8 +218,8 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
         return;
       }
 
-      const isWhiteboardTarget = fullscreenElement === whiteboardContainerRef.current;
-      const isDocumentTarget = fullscreenElement === documentContainerRef.current;
+      const isWhiteboardTarget = fullscreenElement === whiteboardPanelRef.current;
+      const isDocumentTarget = fullscreenElement === documentPanelRef.current;
       const isAiTarget = fullscreenElement === aiContainerRef.current;
 
       setIsWhiteboardFullscreen(isWhiteboardTarget);
@@ -239,7 +241,7 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
 
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
-  }, [aiContainerRef, documentContainerRef, resizeCanvas, setActiveFullscreenPanel, setIsDocumentMiniView, whiteboardContainerRef]);
+  }, [aiContainerRef, documentPanelRef, resizeCanvas, setActiveFullscreenPanel, setIsDocumentMiniView, whiteboardPanelRef]);
 
   return (
     <div className="min-h-screen bg-[#F7F7F7] pb-8">
@@ -325,6 +327,7 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
                 <div className="relative flex-1 overflow-hidden rounded-[20px] border border-[#E5E7EB] bg-white shadow-inner">
                   {activePanel === "whiteboard" ? (
                     <WhiteboardPanel
+                      panelRef={whiteboardPanelRef}
                       containerRef={whiteboardContainerRef}
                       canvasRef={whiteboardCanvasRef}
                       color={whiteboardColor}
@@ -356,6 +359,7 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
 
                   {activePanel === "documents" ? (
                     <DocumentPanel
+                      panelRef={documentPanelRef}
                       containerRef={documentContainerRef}
                       pdfUrl={pdfUrl}
                       pdfName={pdfName}
