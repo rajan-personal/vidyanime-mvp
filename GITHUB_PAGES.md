@@ -20,7 +20,10 @@ assetPrefix: process.env.NODE_ENV === 'production' ? '/your-repo-name/' : '',
 1. Go to your repository settings on GitHub
 2. Navigate to "Pages" in the left sidebar
 3. Under "Source", select "GitHub Actions"
-4. The workflow will automatically deploy when you push to the `main` branch
+4. Click "Save"
+5. The workflow will automatically deploy when you push to the `main` branch
+
+**Important**: You must enable GitHub Pages and set the source to "GitHub Actions" before the workflow will work.
 
 ### 3. Environment Variables
 
