@@ -1,11 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Enable static export for GitHub Pages
-  output: 'export',
-  trailingSlash: true,
   images: {
-    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'https',
@@ -34,9 +30,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Base path for GitHub Pages (update this with your repository name)
-  basePath: process.env.NODE_ENV === 'production' ? '/vidyanime-mvp' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/vidyanime-mvp/' : '',
 };
 
 export default nextConfig;

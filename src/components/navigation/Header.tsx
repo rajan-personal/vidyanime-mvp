@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { getAssetPath, getBasePath } from "@/utils/paths";
+import { getAssetPath } from "@/utils/paths";
 
 interface HeaderProps {
   activeTab?: "principal" | "teacher" | "school";
@@ -17,16 +17,15 @@ export default function Header({
   const router = useRouter();
 
   const handleNavigation = (tab: "principal" | "teacher" | "school") => {
-    const basePath = getBasePath();
     switch (tab) {
       case "principal":
-        router.push(`${basePath}/principal-dashboard`);
+        router.push("/principal-dashboard");
         break;
       case "teacher":
-        router.push(`${basePath}/teachers-list`);
+        router.push("/teachers-list");
         break;
       case "school":
-        router.push(`${basePath}/school-dashboard`);
+        router.push("/school-dashboard");
         break;
     }
   };
@@ -40,7 +39,7 @@ export default function Header({
         <div className="flex flex-row items-center gap-[169px] w-[1180px]">
           {/* Frame 1171276028 - Logo and Title - Clickable to go to select-profile */}
           <Link
-            href={`${getBasePath()}/select-profile`}
+            href="/select-profile"
             className="flex flex-row items-center gap-[20px] w-[306px] h-[80px] cursor-pointer hover:opacity-80 transition-opacity"
           >
             {/* Logo - 80px × 80px */}
