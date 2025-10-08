@@ -102,13 +102,13 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
   const lastVideoMountRef = useRef<HTMLElement | null>(null);
   const targetVideoMount = floatingVideoMount ?? dockedVideoMount;
 
-  useEffect(() => {
-    if (targetVideoMount) {
-      lastVideoMountRef.current = targetVideoMount;
-    }
-  }, [targetVideoMount]);
+  if (targetVideoMount && lastVideoMountRef.current !== targetVideoMount) {
+    lastVideoMountRef.current = targetVideoMount;
+  } else if (!targetVideoMount && floatingVideoMount === null && dockedVideoMount === null && lastVideoMountRef.current) {
+    lastVideoMountRef.current = null;
+  }
 
-  const effectiveVideoMount = lastVideoMountRef.current;
+  const effectiveVideoMount = targetVideoMount ?? lastVideoMountRef.current;
 
   const videoElementClassName = isFloatingVideoActive
     ? "h-full w-full object-contain"
