@@ -93,6 +93,7 @@ export default function DashboardNav({
               alt="Profile"
               width={56}
               height={56}
+              unoptimized
               className="object-cover"
             />
           </div>
