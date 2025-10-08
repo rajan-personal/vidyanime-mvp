@@ -68,6 +68,7 @@ export default function PrincipalDashboard() {
                   alt={profileData.name}
                   width={150}
                   height={150}
+                  unoptimized
                   className="h-full w-full object-cover"
                 />
               </div>

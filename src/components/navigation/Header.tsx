@@ -123,6 +123,7 @@ export default function Header({
               alt="Profile"
               width={56}
               height={56}
+                unoptimized
               className="object-cover"
             />
           </div>
