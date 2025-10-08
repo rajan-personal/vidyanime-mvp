@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Mail, Phone, Edit2 } from "lucide-react";
 import Header from "@/components/navigation/Header";
 
@@ -61,11 +62,13 @@ export default function PrincipalDashboard() {
         <div className="bg-white rounded-[20px] shadow-[0px_0px_8px_rgba(0,0,0,0.06)] p-[35px] mb-6">
           <div className="flex items-center justify-between gap-[356px]">
             <div className="flex items-center gap-[26px]">
-              <div className="w-[150px] h-[150px] rounded-full overflow-hidden flex-shrink-0">
-                <img
+              <div className="w-[150px] h-[150px] overflow-hidden rounded-full flex-shrink-0">
+                <Image
                   src={profileData.avatar}
                   alt={profileData.name}
-                  className="w-full h-full object-cover"
+                  width={150}
+                  height={150}
+                  className="h-full w-full object-cover"
                 />
               </div>
               <div className="flex flex-col gap-[26px]">
