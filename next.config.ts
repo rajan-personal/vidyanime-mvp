@@ -35,8 +35,8 @@ const nextConfig: NextConfig = {
     ],
   },
   // Base path for GitHub Pages (update this with your repository name)
-  basePath: process.env.NODE_ENV === 'production' ? '/school-project' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/school-project/' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/vidyanime-mvp' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/vidyanime-mvp/' : '',
 };
 
 export default nextConfig;

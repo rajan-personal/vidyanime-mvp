@@ -1,6 +1,6 @@
 // Utility function to handle base paths for GitHub Pages
 export function getBasePath(): string {
-  return process.env.NODE_ENV === 'production' ? '/school-project' : '';
+  return process.env.NODE_ENV === 'production' ? '/vidyanime-mvp' : '';
 }
 
 export function getAssetPath(path: string): string {

@@ -6,7 +6,7 @@ This project is configured to deploy to GitHub Pages using GitHub Actions.
 
 ### 1. Repository Configuration
 
-Make sure your repository name matches the `basePath` configured in `next.config.ts`. Currently set to `/school-project`.
+Make sure your repository name matches the `basePath` configured in `next.config.ts`. Currently set to `/vidyanime-mvp`.
 
 If your repository has a different name, update the following in `next.config.ts`:
 
@@ -80,4 +80,4 @@ If you want to use a custom domain:
 6. ✅ Added `.nojekyll` file to prevent Jekyll processing
 7. ✅ Created environment-specific configuration
 
-The site will be available at: `https://[username].github.io/school-project/`
+The site will be available at: `https://[username].github.io/vidyanime-mvp/`
