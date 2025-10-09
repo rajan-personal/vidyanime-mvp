@@ -152,16 +152,49 @@ export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATA
     [gradientBackground, isFloatingVideoActive],
   );
 
-  const handleSeek = useCallback((timestamp: number) => {
-    setSelectedTimestamp(timestamp);
-    videoPlaybackStateRef.current.currentTime = timestamp;
-    const video = videoRef.current;
-    if (!video) return;
-    const playPromise = video.play();
-    if (playPromise) {
-      void playPromise.catch(() => {});
-    }
-  }, []);
+  const handleSeek = useCallback(
+    (timestamp: number) => {
+      setSelectedTimestamp(timestamp);
+
+      const currentState = videoPlaybackStateRef.current;
+      videoPlaybackStateRef.current = {
+        ...currentState,
+        currentTime: timestamp,
+        wasPlaying: true,
+      };
+
+      const video = videoRef.current;
+      if (!video) {
+        return;
+      }
+
+      const applySeek = () => {
+        const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : null;
+        const safeTime = duration ? Math.min(timestamp, Math.max(duration - 0.1, 0)) : Math.max(timestamp, 0);
+        if (!Number.isNaN(safeTime)) {
+          video.currentTime = safeTime;
+        }
+
+        const playPromise = video.play();
+        if (playPromise) {
+          void playPromise.catch(() => {});
+        }
+      };
+
+      if (video.readyState >= 1) {
+        applySeek();
+        return;
+      }
+
+      const handleLoadedData = () => {
+        video.removeEventListener("loadeddata", handleLoadedData);
+        applySeek();
+      };
+
+      video.addEventListener("loadeddata", handleLoadedData);
+    },
+    [videoPlaybackStateRef, videoRef],
+  );
 
   const toggleWhiteboardFullscreen = useCallback(async () => {
     const panel = whiteboardPanelRef.current;
