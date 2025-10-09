@@ -4,6 +4,11 @@ import { useState } from "react";
 import Header from "@/components/navigation/Header";
 import SearchAndFilters from "@/components/profile/SearchAndFilters";
 import TeacherCard from "@/components/profile/TeacherCard";
+import {
+  profileAvatarByName,
+  defaultMaleAvatar,
+  defaultFemaleAvatar,
+} from "@/data/profileAvatars";
 
 export default function TeachersList() {
   const [searchValue, setSearchValue] = useState("");
@@ -16,56 +21,56 @@ export default function TeachersList() {
       name: "Mr. Ajay Singh",
       grade: "Grade 9 & 10",
       subject: "Geography",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+      avatar: profileAvatarByName["Mr. Ajay Singh"] ?? defaultMaleAvatar,
     },
     {
       id: 2,
       name: "Ms. Priyanka Subramaniam",
       grade: "Grade 9",
       subject: "History",
-      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+      avatar: profileAvatarByName["Ms. Priyanka Subramaniam"] ?? defaultFemaleAvatar,
     },
     {
       id: 3,
       name: "Mrs. Sushmita Kapoor",
       grade: "Grade 9",
       subject: "Geography",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+      avatar: profileAvatarByName["Mrs. Sushmita Kapoor"] ?? defaultFemaleAvatar,
     },
     {
       id: 4,
       name: "Mr. Aniket Kashyap",
       grade: "Grade 9",
       subject: "Political Science",
-      avatar: "https://randomuser.me/api/portraits/men/52.jpg",
+      avatar: profileAvatarByName["Mr. Aniket Kashyap"] ?? defaultMaleAvatar,
     },
     {
       id: 5,
       name: "Mr. Manish Sahu",
       grade: "Grade 9",
       subject: "Economics",
-      avatar: "https://randomuser.me/api/portraits/men/67.jpg",
+      avatar: profileAvatarByName["Mr. Manish Sahu"] ?? defaultMaleAvatar,
     },
     {
       id: 6,
       name: "Ms. Kangana Rathod",
       grade: "Grade 9",
       subject: "Physics",
-      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+      avatar: profileAvatarByName["Ms. Kangana Rathod"] ?? defaultFemaleAvatar,
     },
     {
       id: 7,
       name: "Ms. Lavanya Rameshwar",
       grade: "Grade 9",
       subject: "Biology",
-      avatar: "https://randomuser.me/api/portraits/women/72.jpg",
+      avatar: profileAvatarByName["Ms. Lavanya Rameshwar"] ?? defaultFemaleAvatar,
     },
     {
       id: 8,
       name: "Ms. Urmila Oberoi",
       grade: "Grade 9",
       subject: "Chemistry",
-      avatar: "https://randomuser.me/api/portraits/women/81.jpg",
+      avatar: profileAvatarByName["Ms. Urmila Oberoi"] ?? defaultFemaleAvatar,
     },
   ];
 

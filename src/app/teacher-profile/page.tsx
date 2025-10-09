@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Mail, Phone, Edit2, BookOpen, Clock, Users } from "lucide-react";
 import Header from "@/components/navigation/Header";
+import { profileAvatarByName, defaultMaleAvatar } from "@/data/profileAvatars";
 
 export default function TeacherProfile() {
   const profileData = {
@@ -13,7 +14,7 @@ export default function TeacherProfile() {
     subject: "Geography",
     email: "ajay.singh@dpsnoida.edu.in",
     phone: "+91 98765 43211",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    avatar: profileAvatarByName["Mr. Ajay Singh"] ?? defaultMaleAvatar,
     about:
   "Dedicated geography educator with 12 years of experience helping Grades 9 and 10 students connect physical landscapes with human stories. Leads immersive field projects, integrates GIS tools into lessons, and advocates for sustainable development practices in the classroom and beyond.",
     education: [

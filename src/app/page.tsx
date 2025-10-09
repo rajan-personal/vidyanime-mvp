@@ -6,6 +6,7 @@ import { Users, GraduationCap } from "lucide-react";
 import PageHeader from "@/components/profile/PageHeader";
 import SearchAndFilters from "@/components/profile/SearchAndFilters";
 import ProfileSection from "@/components/profile/ProfileSection";
+import { profileAvatarByName, defaultFemaleAvatar, defaultMaleAvatar } from "@/data/profileAvatars";
 
 export default function Home() {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function Home() {
         id: 1,
         name: "Mrs. Pooja Tripathi",
         role: "Principal",
-        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+        avatar: profileAvatarByName["Mrs. Pooja Tripathi"] ?? defaultFemaleAvatar,
       },
     ],
     teachers: [
@@ -27,13 +28,13 @@ export default function Home() {
         id: 2,
         name: "Mr. Ajay Singh",
         role: "Grade 9 & 10 • Geography",
-        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+        avatar: profileAvatarByName["Mr. Ajay Singh"] ?? defaultMaleAvatar,
       },
       {
         id: 3,
         name: "Ms. Priyanka Subramaniam",
         role: "Grade 9 • History",
-        avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+        avatar: profileAvatarByName["Ms. Priyanka Subramaniam"] ?? defaultFemaleAvatar,
       },
     ],
   };

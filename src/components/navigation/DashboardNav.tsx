@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { getAssetPath } from "@/utils/paths";
+import { defaultFemaleAvatar } from "@/data/profileAvatars";
 
 interface DashboardNavProps {
   activeTab?: "principal" | "teacher" | "school";
@@ -10,7 +11,7 @@ interface DashboardNavProps {
 export default function DashboardNav({
   activeTab = "principal",
   subtitle = "Principal Dashboard",
-  profileAvatar = "https://randomuser.me/api/portraits/women/44.jpg",
+  profileAvatar = defaultFemaleAvatar,
 }: DashboardNavProps) {
   return (
     // Header - absolute positioned, 1440px wide, 156px height

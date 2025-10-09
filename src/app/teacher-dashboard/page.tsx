@@ -4,13 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/navigation/Header";
 import { teacherChapters } from "@/data/teacherChapters";
+import { profileAvatarByName, defaultMaleAvatar } from "@/data/profileAvatars";
 import { Edit2 } from "lucide-react";
 
 const teacherData = {
   name: "Mr. Ajay Singh",
   grade: "Grade 9 & 10",
   subject: "Geography",
-  avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  avatar: profileAvatarByName["Mr. Ajay Singh"] ?? defaultMaleAvatar,
 };
 
 const chapterVisualStyles: Record<string, string> = {
@@ -81,7 +82,7 @@ export default function TeacherDashboard() {
 
   return (
     <div className="min-h-screen bg-[#F7F7F7]">
-      <Header activeTab="teacher" profileAvatar={teacherData.avatar} />
+  <Header activeTab="teacher" profileAvatar={teacherData.avatar} />
 
       <div className="pt-[156px] px-[130px] pb-8">
         <div className="w-full max-w-[1180px] mx-auto bg-white rounded-[20px] shadow-[0px_0px_8px_rgba(0,0,0,0.06)] p-[35px] mb-[30px]">

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getAssetPath } from "@/utils/paths";
+import { defaultFemaleAvatar } from "@/data/profileAvatars";
 
 interface HeaderProps {
   activeTab?: "principal" | "teacher" | "school";
@@ -12,7 +13,7 @@ interface HeaderProps {
 
 export default function Header({
   activeTab = "principal",
-  profileAvatar = "https://randomuser.me/api/portraits/women/44.jpg",
+  profileAvatar = defaultFemaleAvatar,
 }: HeaderProps) {
   const router = useRouter();
 

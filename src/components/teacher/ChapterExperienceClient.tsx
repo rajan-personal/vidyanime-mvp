@@ -19,13 +19,14 @@ import { useAiChat } from "./chapter-experience/useAiChat";
 import { useDocumentViewer } from "./chapter-experience/useDocumentViewer";
 import { useFloatingVideo } from "./chapter-experience/useFloatingVideo";
 import { useWhiteboardCanvas } from "./chapter-experience/useWhiteboardCanvas";
+import { defaultMaleAvatar } from "@/data/profileAvatars";
 
 interface ChapterExperienceClientProps {
   chapter: ChapterDetails;
   teacherAvatar?: string;
 }
 
-const DEFAULT_AVATAR = "https://randomuser.me/api/portraits/men/32.jpg";
+const DEFAULT_AVATAR = defaultMaleAvatar;
 
 export function ChapterExperienceClient({ chapter, teacherAvatar = DEFAULT_AVATAR }: ChapterExperienceClientProps) {
   const router = useRouter();

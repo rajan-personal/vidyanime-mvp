@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Mail, Phone, Edit2 } from "lucide-react";
 import Header from "@/components/navigation/Header";
+import { profileAvatarByName, defaultFemaleAvatar } from "@/data/profileAvatars";
 
 export default function PrincipalDashboard() {
   const profileData = {
@@ -11,7 +12,7 @@ export default function PrincipalDashboard() {
     school: "Delhi Public School, Noida",
     email: "principal@dpsnoida.edu.in",
     phone: "+91 98765 43210",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  avatar: profileAvatarByName["Mrs. Pooja Tripathi"] ?? defaultFemaleAvatar,
     about:
       "Educational visionary with over 20 years of experience in academic leadership. Committed to creating an environment that fosters innovation, critical thinking, and holistic development for all students.",
     education: [

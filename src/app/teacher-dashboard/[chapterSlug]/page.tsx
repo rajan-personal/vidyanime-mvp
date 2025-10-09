@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import Header from "@/components/navigation/Header";
 import { ChapterExperienceClient } from "@/components/teacher/ChapterExperienceClient";
 import { chapterBySlug, teacherChapters } from "@/data/teacherChapters";
+import { profileAvatarByName, defaultMaleAvatar } from "@/data/profileAvatars";
 
-const teacherAvatar = "https://randomuser.me/api/portraits/men/32.jpg";
+const teacherAvatar = profileAvatarByName["Mr. Ajay Singh"] ?? defaultMaleAvatar;
 
 interface ChapterPageProps {
   params: Promise<{
