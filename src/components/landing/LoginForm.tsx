@@ -35,17 +35,17 @@ export default function LoginForm() {
 
   return (
     <motion.div
-      className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md"
+      className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md text-gray-900"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Principal Login</h2>
+      <h2 className="text-2xl font-semibold text-gray-900 mb-6">Principal Login</h2>
       {error && <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-4">{error}</div>}
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-800 mb-1">
             Email
           </label>
           <div className="relative">
@@ -57,7 +57,7 @@ export default function LoginForm() {
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 placeholder:text-gray-500"
               placeholder="Enter your email"
               required
             />
@@ -65,7 +65,7 @@ export default function LoginForm() {
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-800 mb-1">
             Password
           </label>
           <div className="relative">
@@ -77,7 +77,7 @@ export default function LoginForm() {
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 placeholder:text-gray-500"
               placeholder="Enter your password"
               required
             />

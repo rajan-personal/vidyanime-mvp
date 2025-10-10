@@ -136,7 +136,7 @@ export default function HomePage() {
       <section id="learn-more" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.h2
-            className="text-3xl font-bold text-center mb-12"
+            className="text-3xl font-bold text-center mb-12 text-gray-900"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -156,8 +156,8 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{item.title}</h3>
+                <p className="text-base text-gray-700">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -167,7 +167,7 @@ export default function HomePage() {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.h2
-            className="text-3xl font-bold text-center mb-12"
+            className="text-3xl font-bold text-center mb-12 text-gray-900"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -197,8 +197,8 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
-                  <p className="text-gray-600">{school.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{school.name}</h3>
+                  <p className="text-base text-gray-700">{school.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -211,7 +211,7 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row justify-between">
             <div className="mb-8 md:mb-0">
               <h2 className="text-xl font-bold mb-4">Vidyanime Learn</h2>
-              <p className="text-gray-400 max-w-md">
+              <p className="text-gray-300 max-w-md">
                 Revolutionizing education through the power of animation, interactivity, and artificial intelligence.
               </p>
             </div>
@@ -221,17 +221,17 @@ export default function HomePage() {
                 <h3 className="text-lg font-semibold mb-3">Company</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       About Us
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       Careers
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       News
                     </a>
                   </li>
@@ -242,17 +242,17 @@ export default function HomePage() {
                 <h3 className="text-lg font-semibold mb-3">Resources</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       Help Center
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       Contact Us
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       Privacy Policy
                     </a>
                   </li>
@@ -263,17 +263,17 @@ export default function HomePage() {
                 <h3 className="text-lg font-semibold mb-3">Connect</h3>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       Twitter
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       LinkedIn
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
                       Facebook
                     </a>
                   </li>
@@ -282,7 +282,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-12 pt-6 text-center text-gray-500">
+          <div className="border-t border-gray-800 mt-12 pt-6 text-center text-gray-400">
             <p>&copy; {new Date().getFullYear()} Vidyanime Learning Pvt. Ltd. All rights reserved.</p>
           </div>
         </div>
