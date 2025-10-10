@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans, Poppins } from "next/font/google";
 import "./globals.css";
 import DesktopOnly from "@/components/DesktopOnly";
+import Providers from "./providers";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -35,7 +36,7 @@ export default function RootLayout({
         style={{ fontFamily: 'var(--font-noto-sans)' }}
       >
         <DesktopOnly>
-          {children}
+          <Providers>{children}</Providers>
         </DesktopOnly>
       </body>
     </html>

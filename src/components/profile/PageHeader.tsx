@@ -1,5 +1,4 @@
 import { Phone, LogOut } from "lucide-react";
-import Image from "next/image";
 
 interface PageHeaderProps {
   title: string;

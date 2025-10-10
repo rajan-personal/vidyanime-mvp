@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: 'www.dpsmathuraroad.org',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        pathname: '/**',
+      },
     ],
   },
 };
