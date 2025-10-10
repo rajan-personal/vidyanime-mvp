@@ -20,8 +20,8 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      await login(email, password);
-      router.push("/school-dashboard");
+  await login(email, password);
+  router.push("/select-profile");
     } catch (submissionError) {
       if (submissionError instanceof Error) {
         setError(submissionError.message);

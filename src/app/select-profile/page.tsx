@@ -7,9 +7,11 @@ import PageHeader from "@/components/profile/PageHeader";
 import SearchAndFilters from "@/components/profile/SearchAndFilters";
 import ProfileSection from "@/components/profile/ProfileSection";
 import { profileAvatarByName, defaultFemaleAvatar, defaultMaleAvatar } from "@/data/profileAvatars";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function SelectProfile() {
   const router = useRouter();
+  const { logout } = useAuth();
   const [searchValue, setSearchValue] = useState("");
   const [selectedGrade, setSelectedGrade] = useState("All Grades");
   const [selectedSubject, setSelectedSubject] = useState("All Subjects");
@@ -46,9 +48,8 @@ export default function SelectProfile() {
   };
 
   const handleLogout = () => {
-    console.log("Logout clicked");
-    // Navigate to login page or clear session
-    router.push("/login");
+    logout();
+    router.push("/");
   };
 
   const handleProfileLogin = (profileId: number) => {

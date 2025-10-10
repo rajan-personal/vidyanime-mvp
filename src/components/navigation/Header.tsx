@@ -1,10 +1,13 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { LogOut } from "lucide-react";
 import { getAssetPath } from "@/utils/paths";
 import { defaultFemaleAvatar } from "@/data/profileAvatars";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface HeaderProps {
   activeTab?: "principal" | "teacher" | "school";
@@ -16,6 +19,28 @@ export default function Header({
   profileAvatar = defaultFemaleAvatar,
 }: HeaderProps) {
   const router = useRouter();
+  const { logout } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    setIsMenuOpen(false);
+    logout();
+    router.push("/");
+  };
 
   const handleNavigation = (tab: "principal" | "teacher" | "school") => {
     switch (tab) {
@@ -118,15 +143,36 @@ export default function Header({
           </nav>
 
           {/* Profile Avatar - Ellipse 7 - 56px × 56px */}
-          <div className="w-[56px] h-[56px] rounded-full overflow-hidden flex-none">
-            <Image
-              src={profileAvatar}
-              alt="Profile"
-              width={56}
-              height={56}
-                unoptimized
-              className="object-cover"
-            />
+          <div className="relative" ref={menuRef}>
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="w-[56px] h-[56px] rounded-full overflow-hidden flex-none border border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
+              aria-haspopup="menu"
+              aria-expanded={isMenuOpen}
+            >
+              <Image
+                src={profileAvatar}
+                alt="Profile"
+                width={56}
+                height={56}
+                  unoptimized
+                className="object-cover"
+              />
+            </button>
+
+            {isMenuOpen && (
+              <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white shadow-lg border border-gray-100 py-2 z-50">
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                >
+                  <LogOut className="w-4 h-4 text-red-500" />
+                  <span>Logout</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

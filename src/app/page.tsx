@@ -15,7 +15,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (currentUser) {
-      router.push("/school-dashboard");
+      router.push("/select-profile");
     }
   }, [currentUser, router]);
 
